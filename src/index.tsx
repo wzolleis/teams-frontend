@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { appEpic } from './app/AppEpic';
 import 'rxjs'; // um Observable mit allen Methoden aus redux-obervable zu erweitern
-import { add2TeamEpic } from './admin/Add2TeamEpic';
+import { add2TeamEpic } from './admin/Add2TeamEpic'; 
 import { removeCleanerFromTeamEpic } from './admin/RemoveFromTeamEpic';
 
 export const rootEpic = combineEpics(
@@ -24,9 +24,9 @@ const store = createStore(reducer, INITAL_STATE, applyMiddleware(epicMiddleware)
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-        <App />
+            <App />
         </Provider>
-        </BrowserRouter>
+    </BrowserRouter>
     ,
     document.getElementById('root') as HTMLElement
 );
