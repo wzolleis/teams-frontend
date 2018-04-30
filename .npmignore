@@ -1,0 +1,9 @@
+tsconfig.json
+.travis.yml
+.nojekyll
+docs/
+dist/test/
+.npmignore
+token
+teams-frontend-*.tgz
+ENV

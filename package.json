@@ -25,7 +25,9 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom --watchAll",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src/",
+    "posttypedoc": "shx cp .nojekyll docs/.nojekyll"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
