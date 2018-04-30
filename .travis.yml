@@ -11,14 +11,15 @@ script:
 after_success:
 - npm run typedoc
 deploy:
-- provider: pages
-  skip_cleanup: true
-  local_dir: "./docs/"
-  github_token: "$GITHUB_TOKEN"
-- provider: heroku
-  app:
-    master: teams-frontend
-    development: teams-frontend-dev
-  skip_cleanup: true
-  api_key:
-    secure: GQtmEdBJ4NQyFw/j19yKTtpMuj9LA5ahu0TTZ7j+cCeMRDgdNrM8Ktx/YYVFCafZRYNCKJyySJW51Gr0Z+G6SE10Q5R04iMMhAYpomn4vvXLKaPH/aOvyrk0ZhWORL+mh+BDi1IXGgme6BmsNF31olqMdDdfzDuDloqywgtPPXdikEEXae0fE+XiWmMK8cK8/e8G2YMxtT/pv4FAw9VD13n/L+s/HxBV98NbRMVR7pPQnlpiImcKzPJprS0iR1L4KaKjqJMCUDhQYWz5roak05rTy9yjMPd++TfF+Dj/B1L/392UUM0Vi7KzCjxFfdMY9fQEjU6Ot5a5jm0VzTaXHY4De/fnF8Dp4SkFw72buXoiWD0yZ1c3EIrUwKVc+WaE6hLCHQ/BbwipCicbcyp5AnxZSQhJYMg7XPkb6W+sxK0TzNztYkwxywD04YguGZ2eavjzTRIbu06iIYZJFjHVCVO3hS2zBkqnyek79JnhYPzgDhNAgkDZDj4kreVPoNX+itLjy4ts4qi9JGPDWKpfWjf70bxq0ovEdYMWYirmAYkFKnirIDDHvdFm1M0IFJQDmYi7V6Rlf29BADNxTcssIoXhMZY7a8MqiJ05gt7mWnlVs7FtfldE6ikOQyjkUeA5EvnVmvilDOvDg/kaeoYFRfJAscwiIjAjRHSMU+7bFq4=
+  matrix:
+  - provider: pages
+    skip_cleanup: true
+    local_dir: "./docs/"
+    github_token: "$GITHUB_TOKEN"
+  - provider: heroku
+    app:
+      master: teams-frontend
+      development: teams-frontend-dev
+    skip_cleanup: true
+    api_key:
+      secure: b6dmH68MQ7mFMI44BAUAsNAROMeWDb5VPf4lc+TRwK4PUMb1MPvkg2sEoJXC92aSDqWSFVPn8+mh1FOyJBCePkYEjyilyQFQNogCbGFp4kF034gr6oRcckTWh+uYUHOHNknynwpOyZ6b0VilcK+EC0qvSD8WxuJjJtydstTJAs1nHyGiGRssT2nW0fBtEWuuFitYTHT377N8jGGPn+UdJLT0v8WeRww8PDpvXUTKpKiwjAnYavCpOatsU01Ulhm4PgMAn5GPD7MQ8+PuOPnQfuMvP9zrQS3aoDuHkQGDw6SelSig1vfRzcqc9sDEpjpoH1Qv/tZDDQJMbb0EZeC01/ze2wSubJEFYe6bS2+BmRtkncEIXO6InVqcXtk6WDTMWBtGW+sU1WxGD6OFjuOLZXM001ZNs2FeX4gbPGH3nfgVhNGOB+44dMpQgXR8ilQrFdqTQRSxDKTlzFMNRDVpupQdpUACd/JjA8BEZFwZ7ZPTVQ8gVHcDY+v0UMCuiUeuQ0cITxbuYP5EC6AnxRTCnZ3K1SPIh/yPWBAlD8QgopEV677dTTvV/24jE2oamJEKS+O1CvGn5axC1QwP4kls4CyZpFNlPmWex/1Sa8eJ0p/3Gm/y3/yaHRL9/7j/47EjNgfonO9Hq5pPcj6xBlouH8UWG6r6CN6qrufhnoSH6VY=
