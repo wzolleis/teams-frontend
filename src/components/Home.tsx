@@ -6,7 +6,7 @@ export class Home extends React.Component<HomeProps> {
     render() {
         return (
             <div className="jumbotron centered">
-                <h1 className="display-4">Welcome to Coffee Cleaner</h1>
+                <h1 className="display-4">Welcome to Teams</h1>
                 <p className="lead">
                     Das ist ein Dojo-Beispiel für eine React-UI-Komponente mit Typescript
                     und einer NodeJs-Anwendung für das Backend
