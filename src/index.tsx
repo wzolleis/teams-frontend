@@ -12,9 +12,10 @@ import { appEpic } from './app/AppEpic';
 import 'rxjs'; // um Observable mit allen Methoden aus redux-obervable zu erweitern
 import { add2TeamEpic } from './admin/Add2TeamEpic'; 
 import { removeCleanerFromTeamEpic } from './admin/RemoveFromTeamEpic';
+import { loadPlayersEpic } from './player/PlayerEpic'
 
 export const rootEpic = combineEpics(
-    appEpic, add2TeamEpic, removeCleanerFromTeamEpic
+    appEpic, add2TeamEpic, removeCleanerFromTeamEpic, loadPlayersEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

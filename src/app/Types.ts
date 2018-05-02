@@ -13,3 +13,14 @@ export type Cleaner = {
     name: string;
     team?: Team;
 };
+
+export type Player = {
+    id?: number,
+    name: string,
+    overall: number,
+    skills: {
+        speed: number,
+        technik: number,
+        kondition: number
+    }
+};
