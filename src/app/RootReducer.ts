@@ -2,6 +2,7 @@ import { Action } from 'redux';
 import { isType } from 'typescript-fsa';
 import { loadData, addCleanerToTeam, removeCleanerFromTeam } from './Actions';
 import { Cleaner, Player, State, Team } from './Types';
+import {loadPlayers} from "../player/PlayerActions";
 
 const INITIAL_TEAMS: Team[] = [];
 const INITIAL_CLEANER: Cleaner[] = [];
@@ -46,6 +47,13 @@ export const reducer = (state: State, action: Action): State => {
             ...state,
             cleaners: updatedCleaners
         };
+    }
+
+    if (isType(action, loadPlayers.done)) {
+        return {
+            ...state,
+            players: action.payload.result.players
+        }
     }
     return state;
 };

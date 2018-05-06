@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { State, Player } from '../app/Types';
-import { Dispatch } from 'redux';
-import { addPlayer, loadPlayers } from './PlayerActions'
+import * as React from "react";
+import {connect} from "react-redux";
+import {State, Player} from "../app/Types";
+import {Dispatch} from "redux";
+import {addPlayer, loadPlayers} from "./PlayerActions";
+import {PlayerList} from "./PlayerList";
 
 export interface PlayerAdminContainerProps {
     players: Player[];
@@ -26,6 +27,7 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
                     <div className="panel-heading c-list">
                         <span className="title centered">Spielerverwaltung</span>
                     </div>
+                    <PlayerList players={this.props.players}/>
                     <p/>
                     <span className="submit-btn">
                         <button className="btn btn-primary">Speichern</button>

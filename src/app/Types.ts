@@ -22,6 +22,6 @@ export type Player = {
     skills: {
         speed: number,
         technik: number,
-        kondition: number
+        endurance: number
     }
 };
