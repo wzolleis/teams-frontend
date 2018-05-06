@@ -26,7 +26,6 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
                     <div className="panel-heading c-list">
                         <span className="title centered">Spielerverwaltung</span>
                     </div>
-
                     <p/>
                     <span className="submit-btn">
                         <button className="btn btn-primary">Speichern</button>
