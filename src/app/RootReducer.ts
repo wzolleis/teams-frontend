@@ -1,6 +1,5 @@
 import { Action } from 'redux';
 import { isType } from 'typescript-fsa';
-import { loadData, addCleanerToTeam, removeCleanerFromTeam } from './Actions';
 import { Cleaner, Player, State, Team } from './Types';
 import {loadPlayers} from "../player/PlayerActions";
 
@@ -14,40 +13,7 @@ export const INITAL_STATE: State = {
     players: INITIAL_PLAYERS
 };
 
-const updateCleaner = (updated: Cleaner, cleaners: Cleaner[]): Cleaner[] => {
-    const index = cleaners.findIndex(c => c.id === updated.id);
-    const cleanersLeft = cleaners.slice(0, index);
-    const cleanersRight = cleaners.slice(index + 1, cleaners.length);
-    return [...cleanersLeft, updated, ...cleanersRight];
-};
-
 export const reducer = (state: State, action: Action): State => {
-    if (isType(action, loadData.done)) {
-        return {
-            ...state,
-            cleaners: action.payload.result.cleaners,
-            teams: action.payload.result.teams
-        };
-    }
-
-    if (isType(action, addCleanerToTeam.done)) {
-        const updated = action.payload.result.cleaner;
-        const updatedCleaners = updateCleaner(updated, state.cleaners);
-
-        return {
-            ...state,
-            cleaners: updatedCleaners
-        };
-    }
-
-    if (isType(action, removeCleanerFromTeam.done)) {
-        const updated = action.payload.result.cleaner;
-        const updatedCleaners = updateCleaner(updated, state.cleaners);
-        return {
-            ...state,
-            cleaners: updatedCleaners
-        };
-    }
 
     if (isType(action, loadPlayers.done)) {
         return {
