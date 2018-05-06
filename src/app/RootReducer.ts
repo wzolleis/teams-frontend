@@ -1,14 +1,16 @@
 import { Action } from 'redux';
 import { isType } from 'typescript-fsa';
 import { loadData, addCleanerToTeam, removeCleanerFromTeam } from './Actions';
-import { Cleaner, State, Team } from './Types';
+import { Cleaner, Player, State, Team } from './Types';
 
 const INITIAL_TEAMS: Team[] = [];
 const INITIAL_CLEANER: Cleaner[] = [];
+const INITIAL_PLAYERS: Player[] = [];
 
 export const INITAL_STATE: State = {
     teams: INITIAL_TEAMS,
-    cleaners: INITIAL_CLEANER
+    cleaners: INITIAL_CLEANER,
+    players: INITIAL_PLAYERS
 };
 
 const updateCleaner = (updated: Cleaner, cleaners: Cleaner[]): Cleaner[] => {

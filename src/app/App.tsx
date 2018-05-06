@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router';
 import { Home } from '../components/Home';
 import { About } from '../components/About';
 import { Help } from '../components/Help';
-import AdminContainer from '../admin/AdminContainer';
+import PlayerAdminContainer from '../player/PlayerAdminContainer'
 
 class App extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class App extends React.Component {
           <Route exact={true} path="/home" component={Home} />
           <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/help" component={Help} />
-          <Route exact={true} path="/admin/data" component={AdminContainer} />
+          <Route exact={true} path="/admin/data" component={PlayerAdminContainer} />
         </Switch>
       </div>
     );

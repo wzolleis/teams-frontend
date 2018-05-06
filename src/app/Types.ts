@@ -1,6 +1,7 @@
 export type State = {
     teams: Team[],
-    cleaners: Cleaner[]
+    cleaners: Cleaner[],
+    players: Player[]
 };
 
 export type Team = {

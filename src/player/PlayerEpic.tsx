@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Player } from '../app/Types'
 import { loadPlayers } from './PlayerActions'
 
-const player: Player[] = [];
+const players: Player[] = [];
 
 export const loadPlayersEpic = (actions$: Observable<Action>): Observable<Action> => {
     return actions$.filter(loadPlayers.started.match)
@@ -13,7 +13,7 @@ export const loadPlayersEpic = (actions$: Observable<Action>): Observable<Action
                 {
                     params: action.payload,
                     result: {
-                        player,
+                        players,
                     }
                 });
         });
