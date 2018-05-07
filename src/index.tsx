@@ -13,6 +13,7 @@ import 'rxjs'; // um Observable mit allen Methoden aus redux-obervable zu erweit
 import { add2TeamEpic } from './admin/Add2TeamEpic'; 
 import { removeCleanerFromTeamEpic } from './admin/RemoveFromTeamEpic';
 import { loadPlayersEpic } from './player/PlayerEpic'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export const rootEpic = combineEpics(
     appEpic, add2TeamEpic, removeCleanerFromTeamEpic, loadPlayersEpic
@@ -20,7 +21,13 @@ export const rootEpic = combineEpics(
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
-const store = createStore(reducer, INITAL_STATE, applyMiddleware(epicMiddleware));
+const composeEnhancers = composeWithDevTools({
+    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
+
+const store = createStore(reducer, INITAL_STATE,
+    composeEnhancers(applyMiddleware(epicMiddleware)));
+
 
 ReactDOM.render(
     <BrowserRouter>
