@@ -14,6 +14,7 @@ import { add2TeamEpic } from './admin/Add2TeamEpic';
 import { removeCleanerFromTeamEpic } from './admin/RemoveFromTeamEpic';
 import { loadPlayersEpic } from './player/PlayerEpic'
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 export const rootEpic = combineEpics(
     appEpic, add2TeamEpic, removeCleanerFromTeamEpic, loadPlayersEpic
@@ -26,7 +27,7 @@ const composeEnhancers = composeWithDevTools({
 });
 
 const store = createStore(reducer, INITAL_STATE,
-    composeEnhancers(applyMiddleware(epicMiddleware)));
+    composeEnhancers(applyMiddleware(thunk, epicMiddleware)));
 
 
 ReactDOM.render(

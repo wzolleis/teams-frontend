@@ -21,3 +21,5 @@ export const addPlayer = actionCreator.async<
     },   // success type
     { code: number }   // error type
     >('ADD_PLAYER');
+
+export const somethingHappened = actionCreator<{foo: string}>('SOMETHING_HAPPENED');
