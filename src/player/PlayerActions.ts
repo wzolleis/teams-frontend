@@ -26,17 +26,13 @@ export const addPlayer = actionCreator.async<{ player: Player },   // parameter 
  * action creator um die Spielerdaten zu laden
  * @param {Dispatch<State>} dispatch Daten an den Store dispatchen
  */
-export const loadPlayerData = (dispatch: Dispatch<State>) => {
-
-    dispatch(loadPlayers.started);
-    getPlayers().then(data => {
-        console.log("data", data);
-        dispatch(loadPlayers.done(
-            {
-                params: {},
-                result: {
-                    players: data,
-                }
-            }));
-    });
+export const loadPlayerData = async (dispatch: Dispatch<State>) => {
+    const data = await getPlayers();
+    dispatch(loadPlayers.done(
+        {
+            params: {},
+            result: {
+                players: data,
+            }
+        }));
 };

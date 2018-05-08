@@ -8,15 +8,16 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import 'rxjs'; // um Observable mit allen Methoden aus redux-obervable zu erweitern
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
 
+import logger from 'redux-logger'
 
 const composeEnhancers = composeWithDevTools({
     // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
 
 const store = createStore(reducer, INITAL_STATE,
-    composeEnhancers(applyMiddleware(thunk)));
+    composeEnhancers(applyMiddleware(thunk, logger)));
 
 
 ReactDOM.render(
