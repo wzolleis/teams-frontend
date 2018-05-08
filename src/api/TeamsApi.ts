@@ -3,6 +3,8 @@ import {Player} from "../app/Types";
 
 const BASE_URL: string = 'https://teams-backend.herokuapp.com';
 
+export const PlAYERS_URL: string = BASE_URL + "/api/players";
+
 export async function getPlayers(): Promise<Player[]> {
     try {
         // Set config defaults when creating the instance

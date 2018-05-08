@@ -1,26 +1,22 @@
-import {Action, Store} from "redux";
+import {Action} from "redux";
 import {Observable} from "rxjs";
-import {loadPlayers, somethingHappened} from "./PlayerActions";
+import {loadPlayers} from "./PlayerActions";
 import {State} from "../app/Types";
 import {Epic} from "redux-observable";
-import {getPlayers} from "../api/TeamsApi";
+import {PlAYERS_URL} from "../api/TeamsApi";
+import {ajax} from "rxjs/observable/dom/ajax";
 
-export const loadPlayersEpic: Epic<Action, State> = (actions$: Observable<Action>, store: Store<State>): Observable<Action> => {
+export const loadPlayersEpic: Epic<Action, State> = (actions$: Observable<Action>): Observable<Action> => {
     return actions$.filter(loadPlayers.started.match)
-        .map(action => {
-            action.payload = {};
-            getPlayers().then(data  => {
-                console.log('data', data);
-                store.dispatch(loadPlayers.done(
+        .switchMap(() =>
+            ajax(PlAYERS_URL)
+                .mergeMap(response => Observable.of(
                     {
-                        params: action.payload,
-                        result: {
-                            players: data,
-                        }
-                    }));
-            });
-            return somethingHappened;
-        });
+                        type: loadPlayers.done,
+                        payload: response.response
+                    }
+                ))
+        )
 
 };
 
