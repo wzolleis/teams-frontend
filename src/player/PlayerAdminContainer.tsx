@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {State, Player} from "../app/Types";
 import {Dispatch} from "redux";
-import {addPlayer, loadPlayers} from "./PlayerActions";
+import {addPlayer, loadPlayerData} from "./PlayerActions";
 import {PlayerList} from "./PlayerList";
 
 export interface PlayerAdminContainerProps {
@@ -40,7 +40,7 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
 
 const mapDispatchToProps = (dispatch: Dispatch<State>): PlayerDispatch => ({
     onAddPlayer: (player: Player) => dispatch(addPlayer.started({player})),
-    onLoadPlayerData: () => dispatch(loadPlayers.started({})),
+    onLoadPlayerData: () => loadPlayerData(dispatch),
 
 });
 
