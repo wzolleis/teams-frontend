@@ -8,7 +8,8 @@ const actionCreator = actionCreatorFactory();
 /**
  * Spielerdaten laden
  */
-export const loadPlayers = actionCreator.async<{},   // parameter type
+export const loadPlayers = actionCreator.async<
+    null,   // parameter type
     {
         players: Player[]
     },   // success type
@@ -30,7 +31,7 @@ export const loadPlayerData = async (dispatch: Dispatch<State>) => {
     const data = await getPlayers();
     dispatch(loadPlayers.done(
         {
-            params: {},
+            params: null,
             result: {
                 players: data,
             }

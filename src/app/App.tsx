@@ -6,6 +6,7 @@ import { Home } from '../components/Home';
 import { About } from '../components/About';
 import { Help } from '../components/Help';
 import PlayerAdminContainer from '../player/PlayerAdminContainer'
+import AddPlayerComponent from '../player/AddPlayerComponent';
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
           <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/help" component={Help} />
           <Route exact={true} path="/admin/data" component={PlayerAdminContainer} />
+          <Route exact={true} path="/admin/addPlayer" component={AddPlayerComponent} />
         </Switch>
       </div>
     );

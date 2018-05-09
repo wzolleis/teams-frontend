@@ -36,6 +36,7 @@
     "src/setupTests.ts"
   ],
   "rules": {
-    "jsx-no-lambda": false
+    "jsx-no-lambda": false,
+    "jsx-alignment": false
   }
 }
