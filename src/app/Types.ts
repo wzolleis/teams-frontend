@@ -1,5 +1,6 @@
 export type State = {
-    players: Player[]
+    players: Player[],
+    player: Player
 };
 
 export type Player = {
