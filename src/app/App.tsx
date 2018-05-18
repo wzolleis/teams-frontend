@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import './App-Grid.css';
 import { Navbar } from '../navbar/Navbar';
 import { Switch, Route } from 'react-router';
 import { Home } from '../components/Home';
