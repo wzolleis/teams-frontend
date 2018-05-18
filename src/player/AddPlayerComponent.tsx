@@ -48,9 +48,9 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
     render() {
         return (
             <div>
-                <form className="container form-horizontal">
-                    <h3 className="text-center form-header">Neuer Spieler</h3>
-                    <label className="control-label form-label" htmlFor="name">Name</label>
+                <form className="container grid-container form-horizontal">
+                    <h3 className="text-center grid-form-header">Neuer Spieler</h3>
+                    <label className="control-label grid-form-label" htmlFor="name">Name</label>
                     <input
                         value={this.state.name}
                         onChange={this.handleChange}
@@ -58,15 +58,15 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
                         name="Name"
                         type="text"
                         placeholder="Name eingeben"
-                        className="form-control form-input"
+                        className="form-control grid-form-input"
                     />
-                    <label className="control-label form-label" htmlFor="skill_overall">Gesamt</label>
+                    <label className="control-label grid-form-label" htmlFor="skill_overall">Gesamt</label>
                     <select
                         value={this.state.overall}
                         onChange={this.handleChange}
                         id="skill_overall"
                         name="skill_overall"
-                        className="form-control form-input"
+                        className="form-control grid-form-input"
                     >
                         <option value="100">Voll krass</option>
                         <option value="70">Ganz gut</option>

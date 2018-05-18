@@ -1,17 +1,17 @@
-.container {
+.grid-container {
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-gap: 16px;
 }
 
-.form-header {
+.grid-form-header {
     grid-column: 1/4;
 }
 
-.form-label {
+.grid-form-label {
     grid-colum: 1/2;
 }
 
-.form-input {
+.grid-form-input {
     grid-column: 2/4;
 }
