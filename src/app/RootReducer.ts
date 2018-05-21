@@ -12,7 +12,7 @@ const DEFAULT_PLAYER: Player =
         typ: "Läufer",
         skills: {
             speed: 100,
-            endurance: 100,
+            condition: 100,
             technik: 100
         }
     };

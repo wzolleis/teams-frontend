@@ -26,10 +26,12 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
                 <div className="panel panel-default">
                     <div className="panel-heading c-list">
                         <span className="title centered">Spielerverwaltung</span>
-                        <a href="/admin/addPlayer" className="fa fa-add">Add</a>
                     </div>
                     <PlayerList players={this.props.players}/>
                     <p/>
+                    <span>
+                        <a href="/admin/addPlayer" className="btn btn-primary fa fa-add ">Add</a>
+                    </span>
                 </div>
             </div>
         );
