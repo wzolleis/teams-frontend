@@ -1,7 +1,5 @@
-.grid-container {
+.gridcontainer {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-gap: 16px;
 }
 
 .grid-form-header {

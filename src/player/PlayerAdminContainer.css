@@ -1,0 +1,24 @@
+.playerAdminContainer {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.playerTable {
+    grid-column: 1 / span 2;
+}
+
+.addPlayerButton {
+    grid-column: 5 / 5;
+}
+
+.playerButtonContainer {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.playerAdminHeader {
+    grid-column: 1 / span 2;
+}

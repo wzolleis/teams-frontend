@@ -4,6 +4,7 @@ import {State, Player} from "../app/Types";
 import {Dispatch} from "redux";
 import {addPlayer, loadPlayerData} from "./PlayerActions";
 import {PlayerList} from "./PlayerList";
+import "./PlayerAdminContainer.css";
 
 export interface PlayerAdminContainerProps {
     players: Player[];
@@ -22,17 +23,15 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
 
     render() {
         return (
-            <div className="container">
-                <div className="panel panel-default">
-                    <div className="panel-heading c-list">
-                        <span className="title centered">Spielerverwaltung</span>
-                    </div>
-                    <PlayerList players={this.props.players}/>
-                    <p/>
-                    <span>
-                        <a href="/admin/addPlayer" className="btn btn-primary fa fa-add ">Add</a>
-                    </span>
+            <div className="playerAdminContainer">
+                <div className="playerAdminHeader title text-center">
+                    Spielerverwaltung
                 </div>
+                <p/>
+                <PlayerList className="playerTable table table-hover table-striped table-bordered" players={this.props.players}/>
+                <span className="playerButtonContainer">
+                    <a href="/admin/addPlayer" className="addPlayerButton btn btn-primary">Add</a>
+                </span>
             </div>
         );
     }

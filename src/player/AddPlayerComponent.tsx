@@ -48,7 +48,7 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
     render() {
         return (
             <div>
-                <form className="container grid-container form-horizontal">
+                <form className="container gridcontainer form-horizontal">
                     <h3 className="text-center grid-form-header">Neuer Spieler</h3>
                     <label className="control-label grid-form-label" htmlFor="name">Name</label>
                     <input

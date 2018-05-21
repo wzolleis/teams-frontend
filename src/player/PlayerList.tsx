@@ -2,7 +2,8 @@ import * as React from "react";
 import {Player} from "../app/Types";
 
 type PlayerListProps = {
-    players: Player[]
+    players: Player[],
+    className: string
 };
 
 export class PlayerList extends React.Component<PlayerListProps> {
@@ -21,8 +22,7 @@ export class PlayerList extends React.Component<PlayerListProps> {
         });
 
         return (
-            <div className="container">
-                <table className="table table-hover table-bordered">
+                <table className={this.props.className}>
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -37,7 +37,6 @@ export class PlayerList extends React.Component<PlayerListProps> {
                         {items}
                     </tbody>
                 </table>
-            </div>
         );
     }
 }
