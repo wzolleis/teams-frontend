@@ -3,6 +3,7 @@ import {Player, State} from "../app/Types";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import "./AddPlayer.css";
+import {DEFAULT_PLAYER} from "../app/RootReducer";
 
 type AddPlayerProps = {
     player: Player,
@@ -24,8 +25,6 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
     };
 
     handleChange = (event: any) => {
-        console.log("event", event);
-
         const id: string = event.target.id;
         const value: string = event.target.value;
 
@@ -84,7 +83,7 @@ const mapDispatchToProps = (dispatch: Dispatch<State>): AddPlayerDispatch => ({
 
 const mapStateToProps = (state: State): AddPlayerProps => {
     return {
-        player: state.player
+        player: DEFAULT_PLAYER
     };
 };
 

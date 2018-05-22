@@ -1,11 +1,11 @@
 import {Action} from "redux";
 import {isType} from "typescript-fsa";
 import {Player, State,} from "./Types";
-import {loadPlayers} from "../player/PlayerActions";
+import {loadPlayerAction, loadPlayers} from "../player/PlayerActions";
 
 const INITIAL_PLAYERS: Player[] = [];
 
-const DEFAULT_PLAYER: Player =
+export const DEFAULT_PLAYER: Player =
     {
         name: "Hugo",
         overall: 70,
@@ -17,9 +17,21 @@ const DEFAULT_PLAYER: Player =
         }
     };
 
+export const ERROR_PLAYER: Player =
+    {
+        name: "Error",
+        overall: 0,
+        typ: "N/A",
+        skills: {
+            speed: 0,
+            condition: 0,
+            technik: 0
+        }
+    };
+
 export const INITAL_STATE: State = {
     players: INITIAL_PLAYERS,
-    player: DEFAULT_PLAYER
+    selectedPlayer: undefined
 };
 
 export const reducer = (state: State, action: Action): State => {
@@ -29,6 +41,12 @@ export const reducer = (state: State, action: Action): State => {
             ...state,
             players: action.payload.result.players
         };
+    }
+    if (isType(action, loadPlayerAction.done)) {
+        return {
+            ...state,
+            selectedPlayer: action.payload.result.player
+        }
     }
     return state;
 };

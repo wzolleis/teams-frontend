@@ -1,7 +1,7 @@
 import actionCreatorFactory from "typescript-fsa";
 import {Player, State} from "../app/Types";
 import {Dispatch} from "redux";
-import {getPlayers} from "../api/TeamsApi";
+import {getPlayer, getPlayers} from "../api/TeamsApi";
 
 const actionCreator = actionCreatorFactory();
 
@@ -16,18 +16,19 @@ export const loadPlayers = actionCreator.async<
     { code: number }   // error type
     >("LOAD_PLAYERS");
 
-export const addPlayer = actionCreator.async<{ player: Player },   // parameter type
+export const loadPlayerAction = actionCreator.async<
+    {id: number },   // parameter type
     {
-        players: Player[]
+        player: Player
     },   // success type
     { code: number }   // error type
-    >("ADD_PLAYER");
+    >("LOAD_PLAYER");
 
 /**
  * action creator um die Spielerdaten zu laden
  * @param {Dispatch<State>} dispatch Daten an den Store dispatchen
  */
-export const loadPlayerData = async (dispatch: Dispatch<State>) => {
+export const loadAllPlayers = async (dispatch: Dispatch<State>) => {
     const data = await getPlayers();
     dispatch(loadPlayers.done(
         {
@@ -36,4 +37,16 @@ export const loadPlayerData = async (dispatch: Dispatch<State>) => {
                 players: data,
             }
         }));
+};
+
+export const loadPlayer = async (dispatch: Dispatch<State>, id: number) => {
+    const data = await getPlayer(id);
+    dispatch(loadPlayerAction.done(
+        {
+            params: {id},
+            result: {
+                player: data
+            }
+        }
+    ))
 };

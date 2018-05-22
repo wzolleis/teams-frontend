@@ -2,21 +2,27 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {State, Player} from "../app/Types";
 import {Dispatch} from "redux";
-import {addPlayer, loadPlayerData} from "./PlayerActions";
+import {loadAllPlayers} from "./PlayerActions";
 import {PlayerList} from "./PlayerList";
 import "./PlayerAdminContainer.css";
+import {RouteComponentProps, withRouter} from "react-router";
 
 export interface PlayerAdminContainerProps {
     players: Player[];
 }
 
 interface PlayerDispatch {
-    onAddPlayer: (player: Player) => void;
     onLoadPlayerData: () => void;
 
 }
 
-class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerDispatch> {
+interface PlayerAdminContainerPathParams {
+
+};
+
+class AdminContainer extends React.Component<PlayerAdminContainerProps
+    & PlayerDispatch
+    & RouteComponentProps<PlayerAdminContainerPathParams>> {
     componentDidMount() {
         this.props.onLoadPlayerData();
     }
@@ -28,7 +34,9 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
                     Spielerverwaltung
                 </div>
                 <p/>
-                <PlayerList onClick={this.handlePlayerSelected} className="playerTable table table-hover table-striped table-bordered" players={this.props.players}/>
+                <PlayerList onClick={(event, player) => this.handlePlayerSelected(event, player)}
+                            className="playerTable table table-hover table-striped table-bordered"
+                            players={this.props.players}/>
                 <span className="playerButtonContainer">
                     <a href="/admin/addPlayer" className="addPlayerButton btn btn-primary">Add</a>
                 </span>
@@ -36,15 +44,13 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
         );
     }
 
-    handlePlayerSelected(event: Event, value: Player) {
-        console.log(event);
-        console.log("value = ", value);
+    handlePlayerSelected(event: Event, player: Player) {
+        this.props.history.push(`/admin/player/${player.id}`);
     }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<State>): PlayerDispatch => ({
-    onAddPlayer: (player: Player) => dispatch(addPlayer.started({player})),
-    onLoadPlayerData: () => loadPlayerData(dispatch)
+    onLoadPlayerData: () => loadAllPlayers(dispatch)
 
 });
 
@@ -54,4 +60,4 @@ const mapStateToProps = (state: State): PlayerAdminContainerProps => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminContainer);   
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminContainer));
