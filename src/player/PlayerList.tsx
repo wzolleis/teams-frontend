@@ -4,13 +4,14 @@ import {Player} from "../app/Types";
 type PlayerListProps = {
     players: Player[],
     className: string
+    onClick: (event: any, value: any) => void;
 };
 
 export class PlayerList extends React.Component<PlayerListProps> {
     render() {
         const items: React.ReactFragment = this.props.players.map((player) => {
             return (
-                <tr key={player.id}>
+                <tr onClick={(event) => this.props.onClick(event, player)} key={player.id}>
                     <td>{player.name}</td>
                     <td>{player.overall}</td>
                     <td>{player.typ}</td>
@@ -22,7 +23,7 @@ export class PlayerList extends React.Component<PlayerListProps> {
         });
 
         return (
-                <table className={this.props.className}>
+                <table  className={this.props.className}>
                     <thead>
                     <tr>
                         <th>Name</th>

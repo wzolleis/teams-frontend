@@ -28,12 +28,17 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps & PlayerD
                     Spielerverwaltung
                 </div>
                 <p/>
-                <PlayerList className="playerTable table table-hover table-striped table-bordered" players={this.props.players}/>
+                <PlayerList onClick={this.handlePlayerSelected} className="playerTable table table-hover table-striped table-bordered" players={this.props.players}/>
                 <span className="playerButtonContainer">
                     <a href="/admin/addPlayer" className="addPlayerButton btn btn-primary">Add</a>
                 </span>
             </div>
         );
+    }
+
+    handlePlayerSelected(event: Event, value: Player) {
+        console.log(event);
+        console.log("value = ", value);
     }
 }
 
