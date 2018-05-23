@@ -29,9 +29,20 @@ export const ERROR_PLAYER: Player =
         }
     };
 
+export const UNDEFINED_PLAYER = {
+    name: "N/A",
+    overall: 0,
+    typ: "N/A",
+    skills: {
+        speed: 0,
+        condition: 0,
+        technik: 0
+    }
+};
+
 export const INITAL_STATE: State = {
     players: INITIAL_PLAYERS,
-    selectedPlayer: undefined
+    selectedPlayer: UNDEFINED_PLAYER
 };
 
 export const reducer = (state: State, action: Action): State => {
