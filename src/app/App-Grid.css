@@ -1,5 +1,6 @@
 .gridcontainer {
     display: grid;
+    grid-row-gap: 10px;
 }
 
 .grid-form-header {
