@@ -31,8 +31,12 @@ class EditPlayerContainer extends React.Component<
 
     render() {
         return (
-            <PlayerDetailsComponent player={this.props.player}/>
+            <PlayerDetailsComponent player={this.props.player} handleSubmit={this.updatePlayer}/>
         )
+    }
+
+    updatePlayer = (player: Player): void => {
+        console.log('update: ', player);
     }
 }
 

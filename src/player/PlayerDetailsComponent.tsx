@@ -2,7 +2,8 @@ import * as React from "react";
 import {Player} from "../app/Types";
 
 type PlayerDetailsComponentProps = {
-    player: Player
+    player: Player,
+    handleSubmit: (player: Player) => void
 }
 
 type PlayerFormState = {
@@ -51,7 +52,7 @@ export class PlayerDetailsComponent extends React.Component<PlayerDetailsCompone
 
     render() {
         return (
-            <form className="container gridcontainer form-horizontal">
+            <form className="container gridcontainer form-horizontal" onSubmit={this.onSubmit}>
                 <h3 className="text-center grid-form-header">{this.props.player.name}</h3>
                 <label className="control-label grid-form-label" htmlFor="name">Name</label>
                 <input
@@ -118,6 +119,8 @@ export class PlayerDetailsComponent extends React.Component<PlayerDetailsCompone
                     placeholder="Kondition"
                     className="form-control grid-form-input"
                 />
+
+                <button className="btn btn-primary" onClick={this.onSubmit}>Speichern</button>
             </form>
         );
     }
@@ -179,5 +182,19 @@ export class PlayerDetailsComponent extends React.Component<PlayerDetailsCompone
 
     parseInt = (value: string): number => {
         return parseInt(value, 10);
+    };
+
+    onSubmit = () =>  {
+        const player: Player = {
+            name: this.state.name,
+            overall: this.state.overall,
+            typ: this.state.typ,
+            skills: {
+                speed: this.state.speed,
+                technik: this.state.technik,
+                condition: this.state.condition
+            }
+        };
+        this.props.handleSubmit(player);
     }
 }
