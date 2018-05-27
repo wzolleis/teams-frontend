@@ -1,5 +1,7 @@
 import * as React from "react";
 import {Player} from "../app/Types";
+import "./PlayerDetailsComponent.css";
+
 
 type PlayerDetailsComponentProps = {
     player: Player,
@@ -120,7 +122,7 @@ export class PlayerDetailsComponent extends React.Component<PlayerDetailsCompone
                     className="form-control grid-form-input"
                 />
 
-                <button className="btn btn-primary" onClick={this.onSubmit}>Speichern</button>
+                <button className="btn btn-primary playerSubmitButton" onClick={this.onSubmit}>Speichern</button>
             </form>
         );
     }
