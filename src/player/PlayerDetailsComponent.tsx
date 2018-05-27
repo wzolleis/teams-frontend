@@ -1,21 +1,8 @@
 import * as React from "react";
-import {RouteComponentProps, withRouter} from "react-router";
-import {loadPlayer} from "./PlayerActions";
-import {Player, State} from "../app/Types";
-import {Dispatch} from "redux";
-import {connect} from "react-redux";
+import {Player} from "../app/Types";
 
 type PlayerDetailsComponentProps = {
     player: Player
-}
-
-type PlayerDetailsDispatch = {
-    onLoadPlayer: (id: number) => void;
-
-}
-
-type PlayerDetailsPathParams = {
-    playerId: number;
 }
 
 type PlayerFormState = {
@@ -27,10 +14,8 @@ type PlayerFormState = {
     condition: number
 }
 
-class PlayerDetailsComponent extends React.Component<RouteComponentProps<PlayerDetailsPathParams>
-    & PlayerDetailsDispatch
-    & PlayerDetailsComponentProps, PlayerFormState> {
-
+export class PlayerDetailsComponent extends React.Component<PlayerDetailsComponentProps, PlayerFormState>
+{
     state = {
         name: "",
         typ: "",
@@ -41,9 +26,14 @@ class PlayerDetailsComponent extends React.Component<RouteComponentProps<PlayerD
     };
 
     componentDidMount() {
-        const {match: {params}} = this.props; // id path param in url
-        this.props.onLoadPlayer(params.playerId);
-
+        this.setState({
+            name: this.props.player.name,
+            typ: this.props.player.typ,
+            overall:this.props.player.overall,
+            speed: this.props.player.skills.speed,
+            technik: this.props.player.skills.technik,
+            condition: this.props.player.skills.condition
+        });
     }
 
     componentWillReceiveProps(nextProps: PlayerDetailsComponentProps) {
@@ -133,60 +123,61 @@ class PlayerDetailsComponent extends React.Component<RouteComponentProps<PlayerD
     }
 
     handlePlayerNameChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            name: event.target.value
-        });
+        if (event.target.id === 'name') {
+            this.setState({
+                ...this.state,
+                name: event.target.value
+            });
+        }
     };
 
     handleTypChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            typ: event.target.value
-        });
-
+        if (event.target.id === 'typ') {
+            this.setState({
+                ...this.state,
+                typ: event.target.value
+            });
+        }
 
     };
 
     handleOverallChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            overall: event.target.value
-        });
+        if (event.target.id === 'overall') {
+            this.setState({
+                ...this.state,
+                overall: this.parseInt(event.target.value)
+            });
+        }
     };
 
     handleSpeedChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            speed: event.target.value
-        });
+        if (event.target.id === 'speed') {
+            this.setState({
+                ...this.state,
+                speed: this.parseInt(event.target.value)
+            });
+        }
     };
 
     handleTechnikChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            technik: event.target.value
-        });
+        if (event.target.id === 'technik') {
+            this.setState({
+                ...this.state,
+                technik: this.parseInt(event.target.value)
+            });
+        }
     };
 
     handleConditionChange = (event: any) => {
-        this.setState({
-            ...this.state,
-            condition: event.target.value
-        });
+        if (event.target.id === 'condition') {
+            this.setState({
+                ...this.state,
+                condition: this.parseInt(event.target.value)
+            });
+        }
+    };
+
+    parseInt = (value: string): number => {
+        return parseInt(value, 10);
     }
 }
-
-const mapDispatchToProps = (dispatch: Dispatch<State>): PlayerDetailsDispatch => ({
-    onLoadPlayer: (id: number) => loadPlayer(dispatch, id)
-
-});
-
-const mapStateToProps = (state: State): PlayerDetailsComponentProps => {
-    const player: Player = state.selectedPlayer;
-    return {
-        player
-    };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayerDetailsComponent));

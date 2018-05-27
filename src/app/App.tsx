@@ -8,7 +8,7 @@ import { About } from '../components/About';
 import { Help } from '../components/Help';
 import PlayerAdminContainer from '../player/PlayerAdminContainer'
 import AddPlayerComponent from '../player/AddPlayerComponent';
-import PlayerDetailsComponent from "../player/PlayerDetailsComponent";
+import EditPlayerContainer from "../player/EditPlayerContainer";
 
 class App extends React.Component {
   render() {
@@ -24,7 +24,7 @@ class App extends React.Component {
           <Route exact={true} path="/help" component={Help} />
           <Route exact={true} path="/admin/data" component={PlayerAdminContainer} />
           <Route exact={true} path="/admin/addPlayer" component={AddPlayerComponent} />
-          <Route exact={true} path="/admin/player/:playerId" component={PlayerDetailsComponent} />
+          <Route exact={true} path="/admin/player/:playerId" component={EditPlayerContainer} />
         </Switch>
       </div>
     );
