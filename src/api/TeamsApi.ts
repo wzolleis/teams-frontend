@@ -3,6 +3,7 @@ import {Player} from "../app/Types";
 import {ERROR_PLAYER} from "../app/RootReducer";
 
 const BASE_URL: string = process.env.TEAMS_BACKEND_URL || 'https://teams-backend-dev.herokuapp.com';
+// const BASE_URL: string = process.env.TEAMS_BACKEND_URL || 'http://localhost:8080';
 
 export async function getPlayers(): Promise<Player[]> {
     try {
@@ -10,6 +11,9 @@ export async function getPlayers(): Promise<Player[]> {
         const instance: AxiosInstance = axios.create({
             baseURL: BASE_URL
         });
+
+        console.log('BASE_URL =', BASE_URL);
+
         const response = await instance.get("/api/players");
         return response.data;
     } catch (error) {

@@ -9,6 +9,7 @@ import { Help } from '../components/Help';
 import PlayerAdminContainer from '../player/PlayerAdminContainer'
 import AddPlayerComponent from '../player/AddPlayerComponent';
 import EditPlayerContainer from "../player/EditPlayerContainer";
+import {LoginForm} from "../authentication/LoginForm";
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/home" component={Home} />
+          <Route exact={true} path="/login" component={LoginForm} />
           <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/help" component={Help} />
           <Route exact={true} path="/admin/data" component={PlayerAdminContainer} />
