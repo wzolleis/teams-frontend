@@ -2,8 +2,8 @@ import axios, {AxiosInstance} from "axios";
 import {Player} from "../app/Types";
 import {ERROR_PLAYER} from "../app/RootReducer";
 
-const BASE_URL: string = process.env.TEAMS_BACKEND_URL || 'https://teams-backend-dev.herokuapp.com';
-// const BASE_URL: string = process.env.TEAMS_BACKEND_URL || 'http://localhost:8080';
+// Heroku: TEAMS_BACKEND_URL, Lokal: REACT_APP_TEAMS_BACKEND_URL, Fallback: 'https://teams-backend-dev.herokuapp.com'
+const BASE_URL: string = process.env.TEAMS_BACKEND_URL || process.env.REACT_APP_TEAMS_BACKEND_URL || 'https://teams-backend-dev.herokuapp.com';
 
 export async function getPlayers(): Promise<Player[]> {
     try {
