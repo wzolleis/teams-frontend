@@ -6,6 +6,8 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "bootstrap-select": "^1.13.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "react": "^16.3.2",
@@ -33,6 +35,8 @@
     "posttypedoc": "shx cp .nojekyll docs/.nojekyll"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.8",
     "@types/react": "^16.3.13",
