@@ -5,6 +5,7 @@ import {Player, State} from "../app/Types";
 import {loadPlayer} from "./PlayerActions";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
+import {parseInt} from "lodash";
 
 type EditPlayerContainerProps = {
     player: Player
@@ -15,7 +16,7 @@ type EditPlayerDispatch = {
 };
 
 type EditPlayerContainerPathParam = {
-    playerId: number
+        playerId: string
 }
 
 class EditPlayerContainer extends React.Component<
@@ -25,19 +26,19 @@ class EditPlayerContainer extends React.Component<
 
     componentDidMount() {
         const {match: {params}} = this.props; // id path param in url
-        this.props.onLoadPlayer(params.playerId);
+        this.props.onLoadPlayer(parseInt(params.playerId));
 
     }
 
     render() {
         return (
             <PlayerDetailsComponent player={this.props.player} handleSubmit={this.updatePlayer}/>
-        )
+        );
     }
 
     updatePlayer = (player: Player): void => {
-        console.log('update: ', player);
-    }
+        console.log("update: ", player);
+    };
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<State>): EditPlayerDispatch => ({

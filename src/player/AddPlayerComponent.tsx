@@ -14,6 +14,13 @@ type AddPlayerState = {
     overall: number,
 }
 
+type ChangeEvent = {
+    target: {
+        id: string,
+        value: string
+    }
+}
+
 interface AddPlayerDispatch {
     onHandleChange: (player: Player) => void;
 }
@@ -24,7 +31,7 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
         overall: 100
     };
 
-    handleChange = (event: any) => {
+    handleChange = (event: ChangeEvent) => {
         const id: string = event.target.id;
         const value: string = event.target.value;
 
