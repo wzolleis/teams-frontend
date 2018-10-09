@@ -84,11 +84,11 @@ class AddPlayerComponent extends React.Component<AddPlayerProps & AddPlayerDispa
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<State>): AddPlayerDispatch => ({
+const mapDispatchToProps = (dispatch: Dispatch): AddPlayerDispatch => ({
     onHandleChange: (player: Player) => console.log(player)
 });
 
-const mapStateToProps = (state: State): AddPlayerProps => {
+const mapStateToProps = (_: State): AddPlayerProps => {
     return {
         player: DEFAULT_PLAYER
     };

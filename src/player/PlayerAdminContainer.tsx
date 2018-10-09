@@ -49,7 +49,7 @@ class AdminContainer extends React.Component<PlayerAdminContainerProps
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<State>): PlayerDispatch => ({
+const mapDispatchToProps = (dispatch: Dispatch): PlayerDispatch => ({
     onLoadPlayerData: () => loadAllPlayers(dispatch)
 
 });

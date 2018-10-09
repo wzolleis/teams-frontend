@@ -41,7 +41,7 @@ class EditPlayerContainer extends React.Component<
     };
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<State>): EditPlayerDispatch => ({
+const mapDispatchToProps = (dispatch: Dispatch): EditPlayerDispatch => ({
     onLoadPlayer: (id: number) => loadPlayer(dispatch, id)
 
 });
